@@ -37,34 +37,11 @@ const startScan = useCallback(async () => {
       const base64Image = image.split(',')[1];
       const mimeType = image.split(';')[0].split(':')[1];
 
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{
-              parts: [
-                {
-                  text: `Tu es un dermatologue expert. Analyse cette photo de peau et réponds UNIQUEMENT en JSON valide avec exactement cette structure:
-{
-  "skinType": "type de peau en français (ex: Normale, Grasse, Sèche, Mixte, Sensible)",
-  "healthScore": nombre entre 0 et 100,
-  "recommendations": ["recommandation 1", "recommandation 2", "recommandation 3", "recommandation 4"]
-}
-Aucun texte avant ou après le JSON.`
-                },
-                {
-                  inline_data: {
-                    mime_type: mimeType,
-                    data: base64Image
-                  }
-                }
-              ]
-            }]
-          })
-        }
-      );
+      const response = await fetch('/api/gemini', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ base64Image, mimeType })
+});
 
       const data = await response.json();
       const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
