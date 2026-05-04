@@ -44,6 +44,7 @@ const startScan = useCallback(async () => {
 });
 
       const data = await response.json();
+      if (!response.ok) throw new Error(JSON.stringify(data));
       const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
       const clean = text.replace(/```json|```/g, '').trim();
       const aiResult = JSON.parse(clean);
@@ -67,9 +68,9 @@ const startScan = useCallback(async () => {
           console.error('Failed to save diagnostic:', err);
         }
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('AI scan failed:', err);
-      alert('Erreur lors de l\'analyse. Réessayez.');
+      alert('Erreur: ' + (err?.message || err));
     } finally {
       setIsScanning(false);
     }

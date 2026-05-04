@@ -26,8 +26,10 @@ Aucun texte avant ou après le JSON.` },
         }]
       })
     }
-  );
-  const data = await response.json();
-  console.error('Gemini response:', JSON.stringify(data));
-  return res.status(response.status).json(data);
+  );const data = await response.json();
+  if (!response.ok) {
+    const errorMsg = data?.error?.message || JSON.stringify(data);
+    return res.status(response.status).json({ error: errorMsg });
+  }
+  return res.status(200).json(data);
 }
