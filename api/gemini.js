@@ -27,7 +27,7 @@ Aucun texte avant ou après le JSON.` },
       })
     }
   );
-
   const data = await response.json();
+  console.error('Gemini response:', JSON.stringify(data));
   return res.status(response.status).json(data);
 }
