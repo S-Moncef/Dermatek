@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`
     },
     body: JSON.stringify({
-      model: 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
+      model: 'nvidia/nemotron-nano-12b-v2-vl:free',
       messages: [{
         role: 'user',
         content: [
