@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`
     },
     body: JSON.stringify({
-      model: 'meta-llama/llama-3.2-11b-vision-instruct:free',
+      model: 'google/gemma-3-12b-it:free',
       messages: [{
         role: 'user',
         content: [
