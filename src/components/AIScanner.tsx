@@ -61,7 +61,7 @@ const startScan = useCallback(async () => {
               image_url: image.substring(0, 100),
               skin_type: aiResult.skinType,
               health_score: aiResult.healthScore,
-              recommendations: { items: aiResult.recommendations }
+              recommendations: aiResult.recommendations
             })
           });
         } catch (err) {
