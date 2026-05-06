@@ -163,14 +163,6 @@ export default function Auth() {
           </p>
         </div>
 
-        {/* Demo credentials */}
-        <div className="mt-6 p-4 bg-primary/5 rounded-2xl border border-primary/20">
-          <p className="text-sm text-center text-secondary">
-            <span className="font-medium text-foreground">Compte démo:</span>
-            <br />
-            demo@dermatek.dz / password123
-          </p>
-        </div>
       </motion.div>
     </main>
   );
