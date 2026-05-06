@@ -10,7 +10,6 @@ export default function Home() {
     <main>
       <Hero />
       <AIScanner />
-      <RoutineSection />
 
       {/* Stats Section */}
       <section className="py-20 px-4">
@@ -53,8 +52,7 @@ export default function Home() {
               Prêt à découvrir votre peau?
             </h2>
             <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-              Rejoignez des milliers d'utilisateurs qui ont transformé leur routine
-              de soins grâce à DERMATEK.
+              Analysez votre peau en quelques secondes et obtenez des recommandations personnalisées.
             </p>
             <Link
               to="/scanner"
@@ -78,7 +76,7 @@ export default function Home() {
               <span className="text-xl font-bold text-white">DERMATEK</span>
             </div>
             <p className="text-white/60 text-sm">
-              © 2024 DERMATEK. Tous droits réservés.
+              © 2026 DERMATEK. Tous droits réservés. — Conçu et développé par Moncef.
             </p>
           </div>
         </div>
