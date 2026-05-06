@@ -11,35 +11,6 @@ export default function Home() {
       <Hero />
       <AIScanner />
 
-      {/* Stats Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="grid sm:grid-cols-3 gap-8"
-          >
-            {[
-              { icon: Users, value: '50,000+', label: 'Utilisateurs satisfaits' },
-              { icon: Star, value: '4.9/5', label: 'Note moyenne' },
-              { icon: Award, value: '98%', label: 'Précision IA' },
-            ].map((stat, i) => (
-              <div
-                key={i}
-                className="text-center p-8 bg-white rounded-3xl border border-border shadow-sm"
-              >
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="w-8 h-8 text-primary" />
-                </div>
-                <p className="text-4xl font-bold text-foreground mb-2">{stat.value}</p>
-                <p className="text-secondary">{stat.label}</p>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-primary to-primary-dark">
         <div className="max-w-4xl mx-auto text-center">
