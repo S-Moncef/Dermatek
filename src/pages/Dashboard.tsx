@@ -281,7 +281,12 @@ export default function Dashboard() {
                     <div>
                       <p className="text-sm text-secondary mb-3">Recommandations</p>
                       <ul className="space-y-2">
-                        {(Array.isArray(selectedDiagnostic.recommendations) ? selectedDiagnostic.recommendations : selectedDiagnostic.recommendations?.items || []).map((rec, i) => (
+                        {(() => {
+  const r = selectedDiagnostic.recommendations;
+  if (Array.isArray(r)) return r;
+  if (typeof r === 'string') { try { const p = JSON.parse(r); return Array.isArray(p) ? p : p?.items || []; } catch { return []; } }
+  return (r as any)?.items || [];
+})().map((rec, i) => (
                           <li key={i} className="flex items-start gap-2">
                             <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                               <span className="text-xs font-semibold text-primary">{i + 1}</span>
