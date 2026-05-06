@@ -40,7 +40,20 @@ Aucun texte avant ou après le JSON.`
   if (!response.ok) {
     return res.status(response.status).json({ error: data?.error?.message || JSON.stringify(data) });
   }
+  const raw = data.choices[0].message.content;
+
+  const jsonMatch = raw.match(/\{[\s\S]*\}/);
+  if (!jsonMatch) {
+    return res.status(500).json({ error: 'Invalid AI response format' });
+  }
+
+  try {
+    JSON.parse(jsonMatch[0]);
+  } catch {
+    return res.status(500).json({ error: 'Malformed JSON from AI' });
+  }
+
   return res.status(200).json({
-    candidates: [{ content: { parts: [{ text: data.choices[0].message.content }] } }]
+    candidates: [{ content: { parts: [{ text: jsonMatch[0] }] } }]
   });
 }
