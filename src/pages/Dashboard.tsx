@@ -286,7 +286,7 @@ export default function Dashboard() {
   if (Array.isArray(r)) return r;
   if (typeof r === 'string') { try { const p = JSON.parse(r); return Array.isArray(p) ? p : p?.items || []; } catch { return []; } }
   return (r as any)?.items || [];
-})().map((rec, i) => (
+}).map((rec: string, i: number) => (
                           <li key={i} className="flex items-start gap-2">
                             <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                               <span className="text-xs font-semibold text-primary">{i + 1}</span>
