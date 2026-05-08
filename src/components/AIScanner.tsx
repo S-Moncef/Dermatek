@@ -265,13 +265,28 @@ const startScan = useCallback(async () => {
                     </ul>
                   </div>
 
+                  {result.healthScore < 70 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="mt-6 p-4 bg-danger/5 rounded-xl border border-danger/20"
+                    >
+                      <p className="text-sm font-medium text-danger mb-1">💡 Produit recommandé</p>
+                      <p className="text-sm text-secondary">
+                        Le meilleur choix, c'est de prendre la crème anti-acné :{' '}
+                        <Link to="/boutique" className="text-primary font-bold hover:underline">ACNEX</Link>
+                      </p>
+                    </motion.div>
+                  )}
+
                   {!user && (
-                    <div className="mt-6 p-4 bg-primary/5 rounded-xl border border-primary/20">
+                    <div className="mt-4 p-4 bg-primary/5 rounded-xl border border-primary/20">
                       <p className="text-sm text-center text-secondary">
                         <Link to="/auth" className="text-primary font-medium hover:underline">Créez un compte</Link> pour sauvegarder et suivre vos diagnostics
                       </p>
                     </div>
                   )}
+
                 </motion.div>
               ) : (
                 <motion.div
