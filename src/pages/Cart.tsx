@@ -89,18 +89,19 @@ export default function Cart() {
         price: item.products.price
       }));
 
-      await fetch('/api/orders', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          user_id: user?.id || 'demo',
-          items,
-          total: total + shipping,
-          payment_method: paymentMethod,
-          shipping_address: `${formData.address}, ${formData.wilaya}`,
-          phone: formData.phone
-        })
-      });
+      const orderRes = await fetch('/api/orders', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    user_id: user?.id || 'demo',
+    items,
+    total: total + shipping,
+    payment_method: paymentMethod,
+    shipping_address: `${formData.address}, ${formData.wilaya}`,
+    phone: formData.phone
+  })
+});
+const order = await orderRes.json();
 
       await fetch('/api/notify', {
         method: 'POST',
