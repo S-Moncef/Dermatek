@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Trash2, Plus, Minus, ShoppingBag, CreditCard, Truck, Loader2, ArrowRight, LogIn } from 'lucide-react';
+import { Trash2, Plus, Minus, ShoppingBag, Truck, Loader2, ArrowRight, LogIn } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
@@ -285,18 +285,7 @@ export default function Cart() {
                           <Truck className={`w-6 h-6 ${paymentMethod === 'cod' ? 'text-primary' : 'text-secondary'}`} />
                           <span className="text-xs font-medium">À la livraison</span>
                         </button>
-                        <button
-                          type="button"
-                          onClick={() => setPaymentMethod('card')}
-                          className={`flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all ${
-                            paymentMethod === 'card'
-                              ? 'border-primary bg-primary/5'
-                              : 'border-border hover:border-primary/50'
-                          }`}
-                        >
-                          <CreditCard className={`w-6 h-6 ${paymentMethod === 'card' ? 'text-primary' : 'text-secondary'}`} />
-                          <span className="text-xs font-medium">CIB/Edahabia</span>
-                        </button>
+
                       </div>
                     </div>
 
