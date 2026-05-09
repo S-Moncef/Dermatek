@@ -102,6 +102,24 @@ export default function Cart() {
         })
       });
 
+      await fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          order,
+          items: cartItems.map(item => ({
+            name: item.products.name,
+            quantity: item.quantity,
+            price: item.products.price
+          })),
+          address: formData.address,
+          phone: formData.phone,
+          wilaya: formData.wilaya,
+          total: total + shipping,
+          payment_method: paymentMethod
+        })
+      });
+
       alert('Commande passée avec succès!');
       setShowCheckout(false);
       fetchCart();
